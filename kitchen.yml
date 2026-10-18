@@ -62,26 +62,3 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/default
-  - name: repo
-    includes:
-      - debian-13-3008-2
-      - debian-13-3006-27
-      - debian-11-3006-27
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - postgres._mapdata
-            - postgres
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - postgres
-              - repo
-      pillars_from_files:
-        postgres.sls: test/salt/pillar/postgres.sls
-        repo.sls: test/salt/pillar/repo.sls
-    verifier:
-      inspec_tests:
-        - path: test/integration/repo

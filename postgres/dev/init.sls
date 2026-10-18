@@ -44,8 +44,8 @@ postgres_maxfiles_limits_conf:
     - source: salt://postgres/templates/limit.maxfiles.plist
     - template: jinja
     - context:
-      soft_limit: {{ postgres.limits.soft }}
-      hard_limit: {{ postgres.limits.hard }}
+        soft_limit: {{ postgres.limits.soft }}
+        hard_limit: {{ postgres.limits.hard }}
     - group: {{ postgres.group }}
   {% endif %}
 
@@ -64,8 +64,8 @@ postgres-desktop-shortcut-add:
     - mode: 755
     - template: jinja
     - context:
-      user: {{ postgres.user }}
-      homes: {{ postgres.userhomes }}
+        user: {{ postgres.user }}
+        homes: {{ postgres.userhomes }}
   cmd.run:
     - name: '/tmp/mac_shortcut.sh "Postgres ({{ postgres.use_upstream_repo }})"'
     - runas: {{ postgres.user }}
